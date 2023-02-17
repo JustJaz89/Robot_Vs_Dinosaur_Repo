@@ -1,6 +1,6 @@
 from dinosaur import Dinosaur
 from robot import Robot
-
+import random
 class Battlefield:
     def __init__(self):
         pass
@@ -15,7 +15,8 @@ class Battlefield:
         print("Welcome to Robots Vs Dinosaurs!\nOnly one side can win!\n")
 
     def battle_phase(self):
-        pass
+        damage = random.randint(10,25)
+        random_attack = random.choice(self.)
 
 
 
