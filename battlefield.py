@@ -9,7 +9,7 @@ class Battlefield:
         pass
 
     def display_welcome(self):
-        print("Welcome to Robots and Dinosaurs!\nOnly one side can win!\n")
+        print("Welcome to Robots Vs Dinosaurs!\nOnly one side can win!\n")
 
     def battle_phase(self):
         pass
