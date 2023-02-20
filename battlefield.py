@@ -1,4 +1,8 @@
-import fleet, herd, robot, dinosaur, weapon
+import fleet
+import herd
+import robot
+import dinosaur
+import weapon
 
 class Battlefield:
     def __init__(self):
