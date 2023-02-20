@@ -5,7 +5,5 @@ class Dinosaur:
         self.attack_power = attack_power
         self.attack_type = ("Claw", "Bite", "Stomp")
 
-    
-    
     def attack(self, robot):
         pass
