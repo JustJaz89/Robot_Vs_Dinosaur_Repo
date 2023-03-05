@@ -14,10 +14,12 @@ class Battlefield:
         self.display_welcome()
         # self.select_game_type()
         self.select_teams()
+        self.battle_phase()
+        self.display_winner()
 
         gaming = True
         while(gaming == True):
-            # self.battle()
+            self.battle_phase()
             if (len(self.herd.dinosaurs) == 0):
                 self.display_winners("Robots")
                 gaming = False
@@ -62,3 +64,9 @@ class Battlefield:
             print(f"Robot: {robot.name}")
         for dinosaur in self.herd.dinosaurs:
             print(f"Dinosaur: {dinosaur.name}")
+
+    def battle_phase(self):
+        pass
+
+    def display_winner(self):
+        pass
