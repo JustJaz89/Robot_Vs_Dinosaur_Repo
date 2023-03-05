@@ -12,12 +12,12 @@ class Battlefield:
     def run_game(self):
         self.setup()
         self.display_welcome()
-        self.select_game_type()
+        # self.select_game_type()
         self.select_teams()
 
         gaming = True
         while(gaming == True):
-            self.battle()
+            # self.battle()
             if (len(self.herd.dinosaurs) == 0):
                 self.display_winners("Robots")
                 gaming = False
@@ -42,13 +42,13 @@ class Battlefield:
         self.fleet.create_fleet([megatron, r2d2, t_800])
         self.herd.create_herd([t_rex, raptor, spino])
 
-    def select_game_type(self):
-        game_type_message = "\nSelect game type:\n1: Single Player\n2: Two Players\n\n#: "
-        game_type = int(input(game_type_message))
-        self.use = True if game_type == 1 else False
+    # def select_game_type(self):
+    #     game_type_message = "\nSelect game type: \n1: Single Player\n2: Two Players\n\n#: "
+    #     game_type = int(input(game_type_message))
+    #     self.use = True if game_type == 1 else False
 
     def select_teams(self):
-        self.p1_selection = self.prompt_input("\nSelect your team: \n1: Robots\n2: Dinosaurs\n\n#: ")
+        self.p1_selection = "\nSelect your team: \n1: Robots\n2: Dinosaurs\n\n#: "
         if self.p1_selection == "1":
             self.p1_team = "Robots"
             self.p2_team = "Dinosaurs"
@@ -57,8 +57,8 @@ class Battlefield:
             self.p2_team = "Robots"
 
     def display_welcome(self):
-        print("Welcome to Robots Vs Dinosaurs!\n.There can only be one team left victorious!\n")
+        print("Welcome to Robots Vs Dinosaurs!\nThere can only be one team left victorious!\n")
         for robot in self.fleet.robots:
-            print(f"{robot.name}")
+            print(f"Robot: {robot.name}")
         for dinosaur in self.herd.dinosaurs:
-            print(f"f{dinosaur.name}")
+            print(f"Dinosaur: {dinosaur.name}")
