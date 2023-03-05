@@ -44,11 +44,11 @@ class Battlefield:
 
     def select_game_type(self):
         game_type_message = "\nSelect game type:\n1: Single Player\n2: Two Players\n\n#: "
-        game_type = int(self.prompt_input(game_type_message, self.number_between, 1, 2))
+        game_type = int(input(game_type_message))
         self.use = True if game_type == 1 else False
 
     def select_teams(self):
-        self.p1_selection = self.prompt_input("\nSelect your team: \n1: Robots\n2: Dinosaurs\n\n#: ", self.number_between, 1, 2)
+        self.p1_selection = self.prompt_input("\nSelect your team: \n1: Robots\n2: Dinosaurs\n\n#: ")
         if self.p1_selection == "1":
             self.p1_team = "Robots"
             self.p2_team = "Dinosaurs"
