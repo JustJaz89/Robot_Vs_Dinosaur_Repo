@@ -1,6 +1,6 @@
 class Herd:
     def __init__(self):
-        self.dinosaurs = ["T_Rex", "Raptor", "Spino"]
+        self.dinosaurs = []
 
     def create_herd(self, dinosaurs):
         for dinosaur in dinosaurs:
