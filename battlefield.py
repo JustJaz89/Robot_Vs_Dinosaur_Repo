@@ -79,21 +79,45 @@ class Battlefield:
             self.dinosaur_turn(dinosaur)
 
     def robot_turn(self, robot):
-        # self.clear()
         if len(self.herd.dinosaurs) > 0:
             print(f"\nIt's {robot.name}'s turn.")
             action = int(input("\nSelect an action:\n1. Change weapon\n2: Attack\nEnter #: "))
             if action == 1:
                 robot.select_weapon(self.weapons)
-            self.show_dino_opponent_options()
+            self.show_dinosaur_opponent_options()
             target = int(input("\nChoose target #: ")) - 1
-            dinosaur = self.herd.dinosaurs[target]
+            dinosaur = self.herd.dinosaurs(target)
             robot.attack_dinosaur(dinosaur)
             if dinosaur.hp <= 0:
                 self.herd.dinosaurs.remove(dinosaur)
             input("Continue...")
 
+    def dinosaur_turn(self, dinosaur):
+        if len(self.fleet.robots) > 0:
+            print(f"\nIt's {dinosaur.name}'s turn.")
+            self.show_robot_opponent_options()
+            target = int(input("\nChoose target #: ")) - 1
+            robot = self.fleet.robots(target)
+            dinosaur.attack_robot(robot)
+            if robot.hp <= 0:
+                self.fleet.robots.remove(robot)
+            input("Continue...")
 
+    def show_robot_opponent_options(self):
+        print("\nThese are the available opponents to attack: ")
+        i = 1
+        for robot in self.fleet.robots:
+            print(f"{i}: {robot.name}")
+            i += 1
+
+    def show_dinosaur_opponent_options(self):
+        print("\nThese are the available opponents to attack: ")
+        i = 1
+        for dinosaur in self.herd.dinosaurs:
+            print(f"{i}: {dinosaur.name}")
+            i += 1
+
+    
         # first_turn = random.randint(1, 2)
         # if first_turn == 1:
         #     print("Robots are up first...")

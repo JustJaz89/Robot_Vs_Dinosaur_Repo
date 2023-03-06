@@ -19,6 +19,6 @@ class Robot:
             print(f"{i + 1}: {weapon.name}")
             i += 1
         selected_weapon = input("Please select a weapon number: ")
-        self.weapon = weapons[selected_weapon]
+        self.weapon = weapons(selected_weapon)
         self.weapon.is_equipped = True
         print(f"{weapon} selected")
