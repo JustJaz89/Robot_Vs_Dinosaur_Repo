@@ -68,5 +68,8 @@ class Battlefield:
     def battle_phase(self):
         pass
 
-    def display_winner(self):
-        pass
+    def display_winner(self, winner):
+        if winner == "Robots":
+            print("Robots WIN!")
+        else:
+            print("Dinosaurs WIN!")
