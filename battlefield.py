@@ -1,13 +1,13 @@
-import fleet
-import herd
+from fleet import Fleet
+from herd import Herd
 from robot import Robot
 from dinosaur import Dinosaur
-import weapon
+from weapon import Weapon
 
 class Battlefield:
     def __init__(self):
-        self.fleet = fleet.Fleet()
-        self.herd = herd.Herd()
+        self.fleet = Fleet()
+        self.herd = Herd()
 
     def run_game(self):
         self.setup()
@@ -28,9 +28,9 @@ class Battlefield:
                 gaming = False
 
     def setup(self):
-        pistol = weapon.Weapon("Pistol", 10)
-        laser_rifle = weapon.Weapon("Laser Rifle", 50)
-        sword = weapon.Weapon("Sword", 25)
+        pistol = Weapon("Pistol", 10)
+        laser_rifle = Weapon("Laser Rifle", 50)
+        sword = Weapon("Sword", 25)
         self.weapons = [pistol, laser_rifle, sword]
 
         megatron = Robot("Megatron")
@@ -50,16 +50,16 @@ class Battlefield:
     #     self.use = True if game_type == 1 else False
 
     def select_teams(self):
-        self.p1_selection = "\nSelect your team: \n1: Robots\n2: Dinosaurs\n\n1 or 2: "
-        self.p1_selection = int(input(self.p1_selection))
-        if self.p1_selection == "1":
-            print("You have selected Robots!")
-            # self.p1_team = "Robots"
-            # self.ai_team = "Dinosaurs"
+        self.choose_team = "\nSelect your team: \n1: Robots\n2: Dinosaurs\n\n1 or 2: "
+        choose_team = int(input(self.choose_team))
+        if choose_team == 1:
+            print("You have selected the fleet of Robots!")
+            return choose_team
+        elif choose_team == 2:
+            print("You have selected the herd of Dinosaurs!")
+            return choose_team
         else:
-            print("You have selected Dinosaurs!")
-            # self.p1_team = "Dinosaurs"
-            # self.ai_team = "Robots"
+            print("Invalid answer. Try again. ")
 
     def display_welcome(self):
         print("Welcome to Robots Vs Dinosaurs!\nThere can only be one team left victorious!\n")
@@ -77,11 +77,11 @@ class Battlefield:
         for dinosaur in self.herd.dinosaurs:
             self.attack_robot(dinosaur)
 
-    def attack_dinosaur(self, dinosaur):
-        dinosaur.health = dinosaur.health - int(self.weapon.attack_power)
-        print(f"{self.name} attacked {dinosaur} with {self.weapon.name} for {self.weapon.attack_power} damage!\n{dinosaur.name}'s health is now {dinosaur.health}")
-        if (dinosaur.health <= 0):
-            print(f"\n{dinosaur.name} has been killed!")
+    # def attack_dinosaur(self, dinosaur):
+    #     dinosaur.health = dinosaur.health - int(self.weapons.attack_power)
+    #     print(f"{self.name} attacked {dinosaur} with {self.weapon.name} for {self.weapon.attack_power} damage!\n{dinosaur.name}'s health is now {dinosaur.health}")
+    #     if (dinosaur.health <= 0):
+    #         print(f"\n{dinosaur.name} has been killed!")
 
     def display_winner(self, winner):
         if winner == "Robots":
