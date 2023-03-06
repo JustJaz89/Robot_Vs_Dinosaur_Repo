@@ -13,7 +13,6 @@ class Battlefield:
     def run_game(self):
         self.setup()
         self.display_welcome()
-        # self.select_game_type()
         self.select_teams()
         self.battle_phase()
         self.display_winner()
@@ -44,11 +43,6 @@ class Battlefield:
 
         self.fleet.create_fleet([megatron, r2d2, t_800])
         self.herd.create_herd([t_rex, raptor, spino])
-
-    # def select_game_type(self):
-    #     game_type_message = "\nSelect game type: \n1: Single Player\n2: Two Players\n\n#: "
-    #     game_type = int(input(game_type_message))
-    #     self.use = True if game_type == 1 else False
 
     def select_teams(self):
         self.choose_team = "\nSelect your team: \n1: Robots\n2: Dinosaurs\n\n1 or 2: "
