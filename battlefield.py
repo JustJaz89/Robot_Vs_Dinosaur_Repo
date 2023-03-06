@@ -66,7 +66,10 @@ class Battlefield:
             print(f"Dinosaur: {dinosaur.name}")
 
     def battle_phase(self):
-        pass
+        for robot in self.fleet.robots:
+            self.robot_turn(robot)
+        for dinosaur in self.herd.dinosaurs:
+            self.dinosaur_turn(dinosaur)
 
     def display_winner(self, winner):
         if winner == "Robots":
