@@ -1,3 +1,4 @@
+import random
 from fleet import Fleet
 from herd import Herd
 from robot import Robot
@@ -73,9 +74,36 @@ class Battlefield:
 
     def battle_phase(self):
         for robot in self.fleet.robots:
-            self.attack_dinosaur(robot)
+            self.robot_turn(robot)
         for dinosaur in self.herd.dinosaurs:
-            self.attack_robot(dinosaur)
+            self.dinosaur_turn(dinosaur)
+
+    def robot_turn(self, robot):
+        # self.clear()
+        if len(self.herd.dinosaurs) > 0:
+            print(f"\nIt's {robot.name}'s turn.")
+            action = int(input("\nSelect an action:\n1. Change weapon\n2: Attack\nEnter #: "))
+            if action == 1:
+                robot.select_weapon(self.weapons)
+            self.show_dino_opponent_options()
+            target = int(input("\nChoose target #: ")) - 1
+            dinosaur = self.herd.dinosaurs[target]
+            robot.attack_dinosaur(dinosaur)
+            if dinosaur.hp <= 0:
+                self.herd.dinosaurs.remove(dinosaur)
+            input("Continue...")
+
+
+        # first_turn = random.randint(1, 2)
+        # if first_turn == 1:
+        #     print("Robots are up first...")
+        #     first_turn = 1
+        # elif first_turn == 2:
+        #     print("Dinosaurs are up first...")
+        #     first_turn = 2
+        # elif first_turn == 1:
+        #     while len
+
 
     # def attack_dinosaur(self, dinosaur):
     #     dinosaur.health = dinosaur.health - int(self.weapons.attack_power)
