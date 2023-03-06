@@ -1,7 +1,7 @@
 import fleet
 import herd
-import robot
-import dinosaur
+from robot import Robot
+from dinosaur import Dinosaur
 import weapon
 
 class Battlefield:
@@ -33,13 +33,13 @@ class Battlefield:
         sword = weapon.Weapon("Sword", 25)
         self.weapons = [pistol, laser_rifle, sword]
 
-        megatron = robot.Robot("Megatron")
-        r2d2 = robot.Robot("R2D2")
-        t_800 = robot.Robot("T-800")
+        megatron = Robot("Megatron")
+        r2d2 = Robot("R2D2")
+        t_800 = Robot("T-800")
 
-        t_rex = dinosaur.Dinosaur("T-Rex", 50)
-        raptor = dinosaur.Dinosaur("Raptor", 25)
-        spino = dinosaur.Dinosaur("Spino", 10)
+        t_rex = Dinosaur("T-Rex", 50)
+        raptor = Dinosaur("Raptor", 25)
+        spino = Dinosaur("Spino", 10)
 
         self.fleet.create_fleet([megatron, r2d2, t_800])
         self.herd.create_herd([t_rex, raptor, spino])
@@ -73,9 +73,15 @@ class Battlefield:
 
     def battle_phase(self):
         for robot in self.fleet.robots:
-            self.attack_dinosaur.Robot(robot)
+            self.attack_dinosaur(robot)
         for dinosaur in self.herd.dinosaurs:
             self.attack_robot(dinosaur)
+
+    def attack_dinosaur(self, dinosaur):
+        dinosaur.health = dinosaur.health - int(self.weapon.attack_power)
+        print(f"{self.name} attacked {dinosaur} with {self.weapon.name} for {self.weapon.attack_power} damage!\n{dinosaur.name}'s health is now {dinosaur.health}")
+        if (dinosaur.health <= 0):
+            print(f"\n{dinosaur.name} has been killed!")
 
     def display_winner(self, winner):
         if winner == "Robots":
