@@ -1,9 +1,9 @@
-# from battlefield import Battlefield
+from battlefield import Battlefield
 
-# battlefield = Battlefield()
-# battlefield.run_game()
+battlefield = Battlefield()
+battlefield.run_game()
 
-import battlefield
+# import battlefield
 
-game = battlefield.Battlefield()
-game.run_game()
+# game = battlefield.Battlefield()
+# game.run_game()

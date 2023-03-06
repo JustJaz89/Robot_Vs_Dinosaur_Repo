@@ -53,22 +53,27 @@ class Battlefield:
         self.p1_selection = "\nSelect your team: \n1: Robots\n2: Dinosaurs\n\n1 or 2: "
         p1_selection = int(input(self.p1_selection))
         if self.p1_selection == "1":
+            # print("You have selected Robots!")
             self.p1_team = "Robots"
-            self.p2_team = "Dinosaurs"
+            self.ai_team = "Dinosaurs"
         else:
+            # print("You have selected Dinosaurs!")
             self.p1_team = "Dinosaurs"
-            self.p2_team = "Robots"
+            self.ai_team = "Robots"
 
     def display_welcome(self):
         print("Welcome to Robots Vs Dinosaurs!\nThere can only be one team left victorious!\n")
+        print("ROBOTS")
         for robot in self.fleet.robots:
-            print(f"Robot: {robot.name}")
+            print(f"{robot.name}")
+        print("--------")
+        print("DINOSAURS")
         for dinosaur in self.herd.dinosaurs:
-            print(f"Dinosaur: {dinosaur.name}")
+            print(f"{dinosaur.name}")
 
     def battle_phase(self):
         for robot in self.fleet.robots:
-            self.robot.attack_dinosaur(robot)
+            self.attack_dinosaur(robot)
         for dinosaur in self.herd.dinosaurs:
             self.dinosaur.attack_robot(dinosaur)
 
