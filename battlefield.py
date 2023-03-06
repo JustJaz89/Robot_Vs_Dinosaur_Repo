@@ -50,7 +50,8 @@ class Battlefield:
     #     self.use = True if game_type == 1 else False
 
     def select_teams(self):
-        self.p1_selection = "\nSelect your team: \n1: Robots\n2: Dinosaurs\n\n#: "
+        self.p1_selection = "\nSelect your team: \n1: Robots\n2: Dinosaurs\n\n1 or 2: "
+        p1_selection = int(input(self.p1_selection))
         if self.p1_selection == "1":
             self.p1_team = "Robots"
             self.p2_team = "Dinosaurs"
@@ -67,9 +68,9 @@ class Battlefield:
 
     def battle_phase(self):
         for robot in self.fleet.robots:
-            self.robot_turn(robot)
+            self.robot.attack_dinosaur(robot)
         for dinosaur in self.herd.dinosaurs:
-            self.dinosaur_turn(dinosaur)
+            self.dinosaur.attack_robot(dinosaur)
 
     def display_winner(self, winner):
         if winner == "Robots":
