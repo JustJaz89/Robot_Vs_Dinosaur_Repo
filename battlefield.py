@@ -16,6 +16,7 @@ class Battlefield:
         self.select_teams()
         self.battle_phase()
         self.display_winner()
+        
 
         gaming = True
         while(gaming == True):
